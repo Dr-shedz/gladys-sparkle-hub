@@ -1,6 +1,11 @@
 import { Home, Building2, Sparkles, TruckIcon, PartyPopper, Settings } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import ServiceCard from "./ServiceCard";
+import residentialImg from "@/assets/residential-cleaning.jpg";
+import commercialImg from "@/assets/commercial-cleaning.jpg";
+import deepCleaningImg from "@/assets/deep-cleaning.jpg";
+import moveCleaningImg from "@/assets/move-cleaning.jpg";
+import eventCleaningImg from "@/assets/event-cleaning.jpg";
+import customCleaningImg from "@/assets/custom-cleaning.jpg";
 
 const Services = () => {
   const services = [
@@ -8,31 +13,37 @@ const Services = () => {
       icon: Home,
       title: "Residential Cleaning",
       description: "Keep your home fresh, clean, and comfortable with our professional residential cleaning services.",
+      image: residentialImg,
     },
     {
       icon: Building2,
       title: "Commercial Cleaning",
       description: "Maintain a spotless and professional workspace that impresses clients and boosts productivity.",
+      image: commercialImg,
     },
     {
       icon: Sparkles,
       title: "Deep Cleaning",
       description: "Thorough, detailed cleaning that reaches every corner and leaves your space immaculate.",
+      image: deepCleaningImg,
     },
     {
       icon: TruckIcon,
       title: "Move-In/Out Cleaning",
       description: "Make moving stress-free with our comprehensive cleaning for new or vacated properties.",
+      image: moveCleaningImg,
     },
     {
       icon: PartyPopper,
       title: "Post-Event Cleaning",
       description: "Quick and efficient cleanup after your events, parties, or gatherings of any size.",
+      image: eventCleaningImg,
     },
     {
       icon: Settings,
       title: "Customized Solutions",
       description: "Tailored cleaning plans designed to meet your specific needs and schedule.",
+      image: customCleaningImg,
     },
   ];
 
@@ -49,32 +60,16 @@ const Services = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={index}
-                className="group p-6 bg-card rounded-xl border border-border hover:border-primary/50 shadow-md hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-accent rounded-lg group-hover:bg-gradient-hero transition-all">
-                    <Icon className="h-6 w-6 text-primary group-hover:text-white transition-colors" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  {service.description}
-                </p>
-                <Link to="/services">
-                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
-                    Book Now
-                  </Button>
-                </Link>
-              </div>
-            );
-          })}
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              icon={service.icon}
+              title={service.title}
+              description={service.description}
+              features={[]}
+              image={service.image}
+            />
+          ))}
         </div>
       </div>
     </section>

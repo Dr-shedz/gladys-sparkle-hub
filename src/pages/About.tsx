@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Stats from "@/components/Stats";
 import { Target, Eye, Award, Heart } from "lucide-react";
+import aboutHeaderImg from "@/assets/about-header.jpg";
+import founderImg from "@/assets/founder-gladys.jpg";
 
 const About = () => {
   const values = [
@@ -32,12 +34,20 @@ const About = () => {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+      <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={aboutHeaderImg} 
+            alt="Gladys Cleaning Team" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-secondary/90" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white">
             About Gladys Cleaning Agency
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+          <p className="text-lg md:text-xl max-w-3xl mx-auto text-white/95">
             Building a cleaner, healthier Lagos through dedication, professionalism, and care
           </p>
         </div>
@@ -46,7 +56,7 @@ const About = () => {
       {/* Founder's Message */}
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 A Message from Our Founder
@@ -54,8 +64,19 @@ const About = () => {
               <p className="text-xl text-primary font-semibold">Gladys</p>
             </div>
 
-            <div className="bg-card p-8 md:p-10 rounded-xl shadow-lg border border-border">
-              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 bg-card p-8 md:p-10 rounded-xl shadow-lg border border-border">
+              <div className="md:col-span-1 flex justify-center items-start">
+                <div className="relative w-full max-w-xs">
+                  <img 
+                    src={founderImg} 
+                    alt="Gladys - Founder" 
+                    className="w-full h-auto rounded-xl shadow-lg"
+                  />
+                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-hero rounded-full opacity-20 blur-xl" />
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 Hello! I'm Gladys, and I started this company with a simple belief: 
                 everyone deserves to live and work in a clean, healthy environment. 
                 Growing up, I learned the value of hard work and attention to detail 
@@ -67,12 +88,13 @@ const About = () => {
                 professionals serves hundreds of satisfied clients across Lagos, from busy 
                 families to thriving businesses.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                What drives us is not just cleaning spaces, but transforming lives. 
-                When we make your home spotless or your office shine, we're giving you 
-                the gift of time, peace of mind, and a healthier environment. That's the 
-                heart of what we do, and it's what we'll continue to do as we grow.
-              </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  What drives us is not just cleaning spaces, but transforming lives. 
+                  When we make your home spotless or your office shine, we're giving you 
+                  the gift of time, peace of mind, and a healthier environment. That's the 
+                  heart of what we do, and it's what we'll continue to do as we grow.
+                </p>
+              </div>
             </div>
           </div>
         </div>

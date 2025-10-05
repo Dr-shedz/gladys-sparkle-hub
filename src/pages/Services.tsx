@@ -1,13 +1,21 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
+import ServiceCard from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Home, Building2, Sparkles, TruckIcon, PartyPopper, Settings, CheckCircle2 } from "lucide-react";
+import { Home, Building2, Sparkles, TruckIcon, PartyPopper, Settings } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import servicesHeaderImg from "@/assets/services-header.jpg";
+import residentialImg from "@/assets/residential-cleaning.jpg";
+import commercialImg from "@/assets/commercial-cleaning.jpg";
+import deepCleaningImg from "@/assets/deep-cleaning.jpg";
+import moveCleaningImg from "@/assets/move-cleaning.jpg";
+import eventCleaningImg from "@/assets/event-cleaning.jpg";
+import customCleaningImg from "@/assets/custom-cleaning.jpg";
 
 const Services = () => {
   const { toast } = useToast();
@@ -19,36 +27,42 @@ const Services = () => {
       title: "Residential Cleaning",
       description: "Complete home cleaning services including dusting, vacuuming, mopping, kitchen and bathroom sanitization, and more.",
       features: ["Regular maintenance cleaning", "One-time deep cleaning", "Flexible scheduling", "Eco-friendly products"],
+      image: residentialImg,
     },
     {
       icon: Building2,
       title: "Commercial Cleaning",
       description: "Professional office and business cleaning to maintain a pristine, productive workplace environment.",
       features: ["Daily or weekly cleaning", "After-hours service", "Customized plans", "Professional equipment"],
+      image: commercialImg,
     },
     {
       icon: Sparkles,
       title: "Deep Cleaning",
       description: "Intensive, thorough cleaning that reaches every corner, perfect for spring cleaning or special occasions.",
       features: ["Detailed surface cleaning", "Hard-to-reach areas", "Appliance cleaning", "Complete sanitization"],
+      image: deepCleaningImg,
     },
     {
       icon: TruckIcon,
       title: "Move-In/Out Cleaning",
       description: "Comprehensive cleaning for properties being vacated or newly occupied, ensuring a fresh start.",
       features: ["Empty property cleaning", "Cabinet & closet cleaning", "Window cleaning", "Ready for occupancy"],
+      image: moveCleaningImg,
     },
     {
       icon: PartyPopper,
       title: "Post-Event Cleaning",
       description: "Quick and efficient cleanup after parties, gatherings, or corporate events of any size.",
       features: ["Rapid response", "Complete cleanup", "Waste disposal", "Furniture arrangement"],
+      image: eventCleaningImg,
     },
     {
       icon: Settings,
       title: "Customized Solutions",
       description: "Tailored cleaning plans designed specifically for your unique needs and schedule.",
       features: ["Personalized service", "Flexible options", "Special requests", "Ongoing support"],
+      image: customCleaningImg,
     },
   ];
 
@@ -115,13 +129,21 @@ const Services = () => {
       <Navbar />
 
       {/* Header with Quick Booking */}
-      <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={servicesHeaderImg} 
+            alt="Professional Cleaning Equipment" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-secondary/90" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white">
               Our Services
             </h1>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+            <p className="text-lg md:text-xl max-w-3xl mx-auto text-white/95">
               Professional cleaning solutions for every need
             </p>
           </div>
@@ -185,46 +207,17 @@ const Services = () => {
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="space-y-12">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={index}
-                  className="max-w-5xl mx-auto bg-card rounded-xl shadow-lg border border-border p-6 md:p-8 hover:shadow-xl transition-all"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="md:col-span-2">
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="p-3 bg-gradient-hero rounded-lg flex-shrink-0">
-                          <Icon className="h-7 w-7 text-white" />
-                        </div>
-                        <div>
-                          <h3 className="text-2xl font-bold text-foreground mb-2">
-                            {service.title}
-                          </h3>
-                          <p className="text-muted-foreground">
-                            {service.description}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 ml-0 md:ml-16">
-                        {service.features.map((feature, fIndex) => (
-                          <div key={fIndex} className="flex items-center gap-2">
-                            <CheckCircle2 className="h-4 w-4 text-secondary flex-shrink-0" />
-                            <span className="text-sm text-muted-foreground">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center md:justify-end">
-                      <Button size="lg" className="w-full md:w-auto shadow-md">
-                        Book This Service
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {services.map((service, index) => (
+              <ServiceCard
+                key={index}
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                features={service.features}
+                image={service.image}
+                detailed
+              />
+            ))}
           </div>
         </div>
       </section>

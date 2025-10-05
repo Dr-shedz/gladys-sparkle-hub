@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Mail, Phone, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,8 +12,8 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="p-2 bg-gradient-hero rounded-lg shadow-md">
-                <Sparkles className="h-5 w-5 text-white" />
+              <div className="w-10 h-10 rounded-lg shadow-md overflow-hidden bg-white p-1">
+                <img src={logo} alt="Gladys Cleaning Agency Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-lg text-foreground">

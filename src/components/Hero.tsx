@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[600px] md:min-h-[700px] flex items-center bg-gradient-hero overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzIgMCAzLjMgMS43IDMuMyAzLjdzLTEuMyAzLjctMy4zIDMuN2MtMiAwLTMuMy0xLjctMy4zLTMuN1MzNCAxNCAzNiAxNE0xNCAzNmMyIDAgMy4zIDEuNyAzLjMgMy43cy0xLjMgMy43LTMuMyAzLjdjLTIgMC0zLjMtMS43LTMuMy0zLjdTMTIgMzYgMTQgMzYiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+    <section className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden">
+      {/* Video-style Background with Ken Burns Effect */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center animate-[ken-burns_20s_ease-in-out_infinite]"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-secondary/80" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzIgMCAzLjMgMS43IDMuMyAzLjdzLTEuMyAzLjctMy4zIDMuN2MtMiAwLTMuMy0xLjctMy4zLTMuN1MzNCAxNCAzNiAxNE0xNCAzNmMyIDAgMy4zIDEuNyAzLjMgMy43cy0xLjMgMy43LTMuMyAzLjdjLTIgMC0zLjMtMS43LTMuMy0zLjdTMTIgMzYgMTQgMzYiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-10" />
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">

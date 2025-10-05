@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import FAQ from "@/components/FAQ";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import contactHeaderImg from "@/assets/contact-header.jpg";
 
 const Contact = () => {
   const faqItems = [
@@ -33,12 +34,20 @@ const Contact = () => {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-24 pb-12 md:pt-32 md:pb-16 bg-gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+      <section className="relative pt-24 pb-12 md:pt-32 md:pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={contactHeaderImg} 
+            alt="Customer Service Representative" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-secondary/90" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-white">
             Get in Touch
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+          <p className="text-lg md:text-xl max-w-3xl mx-auto text-white/95">
             Have questions or ready to book? We're here to help!
           </p>
         </div>

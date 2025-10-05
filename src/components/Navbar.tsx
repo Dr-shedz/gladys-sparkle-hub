@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +23,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="p-2 bg-gradient-hero rounded-lg shadow-md group-hover:shadow-lg transition-all">
-              <Sparkles className="h-5 w-5 md:h-6 md:w-6 text-white" />
+            <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg shadow-md group-hover:shadow-lg transition-all overflow-hidden bg-white p-1">
+              <img src={logo} alt="Gladys Cleaning Agency Logo" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-lg md:text-xl text-foreground">

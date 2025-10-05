@@ -108,6 +108,14 @@ export default {
             opacity: "1",
           },
         },
+        "ken-burns": {
+          "0%, 100%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.1)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
