@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, LucideIcon } from "lucide-react";
-import { Link } from "react-router-dom";
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -9,9 +8,10 @@ interface ServiceCardProps {
   features: string[];
   image: string;
   detailed?: boolean;
+  onBookClick?: () => void;
 }
 
-const ServiceCard = ({ icon: Icon, title, description, features, image, detailed = false }: ServiceCardProps) => {
+const ServiceCard = ({ icon: Icon, title, description, features, image, detailed = false, onBookClick }: ServiceCardProps) => {
   if (detailed) {
     return (
       <div className="max-w-5xl mx-auto bg-card rounded-xl shadow-lg border border-border overflow-hidden hover:shadow-xl transition-all">
@@ -47,7 +47,7 @@ const ServiceCard = ({ icon: Icon, title, description, features, image, detailed
             />
             <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent md:bg-gradient-to-l md:from-card md:to-transparent" />
             <div className="absolute bottom-6 right-6">
-              <Button size="lg" className="shadow-lg">
+              <Button size="lg" className="shadow-lg" onClick={onBookClick}>
                 Book This Service
               </Button>
             </div>
@@ -77,11 +77,13 @@ const ServiceCard = ({ icon: Icon, title, description, features, image, detailed
         <p className="text-muted-foreground mb-4">
           {description}
         </p>
-        <Link to="/services">
-          <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
-            Book Now
-          </Button>
-        </Link>
+        <Button 
+          variant="outline" 
+          className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all"
+          onClick={onBookClick}
+        >
+          Book Now
+        </Button>
       </div>
     </div>
   );
